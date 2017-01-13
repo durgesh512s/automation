@@ -6,24 +6,29 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Reporter;
 
 public class Method {
 
 	public static WebDriver test = new FirefoxDriver();
 	public static Properties p = new Properties();
 
-	public void Javascript() {
-		JavascriptExecutor js = (JavascriptExecutor) test;
-		js.executeScript("window.alert('Enter Valid Captcha')");
+	public static void Javascript() {
+		/*
+		 * JavascriptExecutor js = (JavascriptExecutor) test;
+		 * js.executeScript("document.getElementById('12451-SL-GN-0').click();")
+		 * ;
+		 */
+
 	}
 
-	public void msg() {
-		System.out.println("Test Case Passed");
+	protected void logMessage(String message) {
+		Reporter.log(message, true);
 	}
 
 	public void Data() throws IOException {
@@ -40,6 +45,12 @@ public class Method {
 
 	public void Time() {
 		test.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	}
+
+	public void Handelalert() {
+		Alert alert=test.switchTo().alert();
+		System.out.println(alert.getText());
+		alert.accept();
 	}
 
 	public void Hardwait() throws InterruptedException {
