@@ -40,6 +40,21 @@ public class IRCTC extends Objects {
 	public void Passengers() throws Exception {
 
 		form.Pass();
+		logMessage("Passengers are Filled");
 
+	}
+
+	@Test(dependsOnMethods = "Passengers")
+	public void Payment() {
+
+		form.Payment1();
+		logMessage("Payment Page");
+	}
+
+	@Test(dependsOnMethods = "Passengers")
+	public void Paytm() {
+
+		form.Paytm1();
+		logMessage("Paytm Page");
 	}
 }
